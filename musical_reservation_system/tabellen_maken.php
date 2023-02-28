@@ -3,12 +3,13 @@
 </head>
 <body>
 <?php
+/*
 $servername = "localhost";
 $username = "root";
 $password = "usbw";
 $stoelen = [['Rij 1'],['Rij 2'],['Rij 3'],['Rij 4'],['Rij 5'],['Rij 6'],['Rij 7'],['Rij 8'],['Rij 9'],['Rij 10'],['Rij 11'],['Rij 12'],['Rij 13'],['Rij 14'],['Rij 15'],['Rij 16'],['Rij 17'],['Rij 18'],['Rij 19']];
 $aantal_stoelen = [23,24,25,26,27,28,29,30,31,32,33,31,32,31,30,31,30,31,34];
-/*   $conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password);
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
@@ -19,18 +20,11 @@ if ($conn->query($sql) === TRUE) {
  echo "Error creating database: " . $conn->error;
 }
 mysqli_close($conn); 
- */
+*/
 $dbname = "musical_reser";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-/* 
-$sql = "DROP TABLE reserveringen";	
-if ($conn->query($sql) === TRUE) {
-	echo "tabel gemaakt";
-}else{
-			echo "fout <br>";
-			echo("Error description: " . $conn -> error);
-		}
+/*
 $sql = "CREATE TABLE reserveringen(
 id INT PRIMARY KEY,
 voornaam VARCHAR(30) NOT NULL,
@@ -40,7 +34,7 @@ email VARCHAR(63) NOT NULL,
 aantal_tickets INT NOT NULL,
 datum VARCHAR(31) NOT NULL,
 kosten INT NOT NULL
-)";	
+)";
 if ($conn->query($sql) === TRUE) {
 	echo "tabel gemaakt";
 }else{
@@ -53,9 +47,9 @@ if ($conn->query($sql) === TRUE) {
 id INT PRIMARY KEY,
 stoelrij INT NOT NULL,
 stoelnummer INT NOT NULL,
- status INT NOT NULL, 
+ status INT NOT NULL,
 reservingingsnummer INT
-)";	
+)";
 if ($conn->query($sql) === TRUE) {
 	echo "tabel gemaakt";
 }else{
@@ -66,9 +60,9 @@ $sql = "CREATE TABLE zaal_donderdag_avond(
 id INT PRIMARY KEY,
 stoelrij INT NOT NULL,
 stoelnummer INT NOT NULL,
- status INT NOT NULL, 
+ status INT NOT NULL,
 reservingingsnummer INT
-)";	
+)";
 if ($conn->query($sql) === TRUE) {
 	echo "tabel gemaakt";
 }else{
@@ -79,9 +73,9 @@ $sql = "CREATE TABLE zaal_vrijdag_middag(
 id INT PRIMARY KEY,
 stoelrij INT NOT NULL,
 stoelnummer INT NOT NULL,
- status INT NOT NULL, 
+ status INT NOT NULL,
 reservingingsnummer INT
-)";	
+)";
 if ($conn->query($sql) === TRUE) {
 	echo "tabel gemaakt";
 }else{
@@ -92,18 +86,18 @@ $sql = "CREATE TABLE zaal_vrijdag_avond(
 id INT PRIMARY KEY,
 stoelrij INT NOT NULL,
 stoelnummer INT NOT NULL,
- status INT NOT NULL, 
+ status INT NOT NULL,
 reservingingsnummer INT
-)";	  
+)";
 if ($conn->query($sql) === TRUE) {
 	echo "tabel gemaakt";
 }else{
 			echo "fout <br>";
 			echo("Error description: " . $conn -> error);
 		}
+*/
 
-
- $i = 0; 
+ $i = 0;
 for ($x = 0; $x < count($stoelen); $x++){
 	for ($y = 0; $y < $aantal_stoelen[$x]; $y++){
 		$sql = "INSERT INTO zaal_woensdag_avond (id,stoelrij, stoelnummer, status) VALUES ('".$i."', '".($x+1)."', '".($y+1)."', '0')";
@@ -152,7 +146,26 @@ for ($x3 = 0; $x3 < count($stoelen); $x3++){
 		}
 		$i = $i + 1;
 	}
-} */
+}
+/*
+$sql = "CREATE TABLE inloggegevens(
+	id int PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR(30) NOT NULL UNIQUE,
+	password VARCHAR(30) NOT NULL
+	)";
+if ($conn->query($sql) === TRUE) {
+	echo "tabel gemaakt<br>";
+} else{
+	echo "Fout".mysqli_error($conn)."<br>";
+}
+*/
+$sql = "INSERT INTO inloggegevens (username, password) VALUES ('productie', 'CLVMusical2023')";
+if ($conn->query($sql) === TRUE) {
+	echo "gegevens ingevoerd <br>";
+}else{
+	echo "fout <br>";
+}
+
 $sql = "SELECT * FROM zaal_vrijdag_middag WHERE status=0";
 $result = $conn->query($sql);
 
