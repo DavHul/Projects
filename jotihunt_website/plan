@@ -1,0 +1,26 @@
+Voor joti hunt. Bestaat uit verschillende onderdelen die met 1 centrale database communiceren. Er is een applicatie voor de hunters, eentje voor HQ en een voor de puzzelaars. 
+
+[  ] Hunters
+Meld hunt knop om hunt aan te geven
+Meld spot knop om plaats gespotte vos aan te geven en welke vos het was
+Lijnen tussen spots/hunts vossen voor anticipatie richting
+Vossen + lijnen eigen kleur 
+
+Lagen map:
+- vossen
+- hints
+- hunters
+- clubhuis locaties 
+- deelgebieden / speelgebied 
+
+[  ] HQ
+Verwijderen onjuiste spots
+Invoeren coordinaten + tijd
+Cirkel om HQ met tegenhunt richting
+Zelfde kaart als vossen maar zonder knoppen
+Scherm met enkel kaart voor grote projectie
+
+[  ] Puzzelaars
+Livefeed website met puzzels
+Invoeren hint + automatisch omzetten naar coördinaten 
+Hint op kaart laten zien
